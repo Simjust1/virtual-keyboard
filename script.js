@@ -1,4 +1,4 @@
-let lang = 'ru';
+let lang = 'en';
 
 const keysList = [
   //первый массив - клавиши в латинице
@@ -379,7 +379,7 @@ const keysList = [
   },
   {
     title: 'Del',
-    class: 'button button_short',
+    class: 'button button_middle',
   },
   {
     title: 'Caps Lock',
@@ -538,12 +538,12 @@ const divWindow = document.createElement('div');
 divWindow.className = 'block-window';
 wrapper.prepend(divWindow);
 
+
+function buildKeyboard() {
+
 const divMain = document.createElement('div');
 divMain.className = 'main';
 wrapper.append(divMain);
-
-
-
 
 const divRow1 = document.createElement('div');
 divRow1.className = 'row';
@@ -650,6 +650,8 @@ for(let i = 55; i < 64; i++) {
   }
 }
 
+
+
 //GETTING NUMBER OF KEY FOR ANIMATION
 let numberId;
 let butt = document.querySelectorAll('.button');
@@ -657,7 +659,6 @@ let butt = document.querySelectorAll('.button');
 butt.forEach(element => {
   element.addEventListener('click', showTargets);
 });
-
 
 function showTargets(e) {
   numberId = e.target.closest('button').getAttribute('id');
@@ -681,3 +682,26 @@ function showTargets(e) {
     butt.classList.toggle('active');
   }
 }
+}
+
+buildKeyboard();
+
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'ShiftLeft' && (event.ctrlKey || event.metaKey)) {
+    if (lang === 'en') {
+         lang = 'ru';
+         wrapper.lastChild.remove();
+         buildKeyboard();
+         showTargets(e);
+    }
+    else if (lang === 'ru') {
+      lang = 'en';
+      wrapper.lastChild.remove();
+      buildKeyboard();
+      showTargets(e);
+    }
+    //console.log(lang);
+  }
+});
+
+
