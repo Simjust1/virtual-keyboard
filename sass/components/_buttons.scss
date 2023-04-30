@@ -8,6 +8,7 @@
   border: none;
   &:active {
     border-radius: 50%;
+    background-color: rgb(11, 11, 190)
   }
 }
 
@@ -15,7 +16,7 @@
   width: 50px;
   height: 35px;
   background-color: $color-additional;
-  color: white;
+  color: rgb(209, 199, 199);
   font-family: Arial, Helvetica, sans-serif;
   &:active {
     border-radius: 50%;
@@ -26,7 +27,7 @@
   width: 70px;
   height: 35px;
   background-color: $color-additional;
-  color: white;
+  color: rgb(209, 199, 199);
   font-family: Arial, Helvetica, sans-serif;
 }
 

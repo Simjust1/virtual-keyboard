@@ -9,13 +9,14 @@
 }
 .button_short:active {
   border-radius: 50%;
+  background-color: rgb(11, 11, 190);
 }
 
 .button_middle {
   width: 50px;
   height: 35px;
   background-color: black;
-  color: white;
+  color: rgb(209, 199, 199);
   font-family: Arial, Helvetica, sans-serif;
 }
 .button_middle:active {
@@ -26,7 +27,7 @@
   width: 70px;
   height: 35px;
   background-color: black;
-  color: white;
+  color: rgb(209, 199, 199);
   font-family: Arial, Helvetica, sans-serif;
 }
 

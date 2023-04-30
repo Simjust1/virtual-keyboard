@@ -238,5 +238,8 @@ butt.forEach(element => {
 function showTargets(e) {
   numberId = e.target.closest('button').getAttribute('id');
   console.log(numberId);
+  let span = document.createElement('span');
+  divWindow.append(span);
+  span.textContent = numberId;
   butt.classList.toggle('active');
 }
