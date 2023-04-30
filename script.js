@@ -650,8 +650,6 @@ for(let i = 55; i < 64; i++) {
   }
 }
 
-
-
 //GETTING NUMBER OF KEY FOR ANIMATION
 let numberId;
 let butt = document.querySelectorAll('.button');
@@ -692,16 +690,20 @@ document.addEventListener('keydown', function(event) {
          lang = 'ru';
          wrapper.lastChild.remove();
          buildKeyboard();
-         showTargets(e);
     }
     else if (lang === 'ru') {
       lang = 'en';
       wrapper.lastChild.remove();
       buildKeyboard();
-      showTargets(e);
     }
-    //console.log(lang);
   }
 });
 
 
+document.addEventListener('keypress', function(event) {
+  let key = event.key;
+  let span = document.createElement('span');
+  divWindow.append(span);
+  span.innerHTML = key;
+
+});
