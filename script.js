@@ -15,7 +15,6 @@ window.addEventListener('unload', saveSessionStorage);
 
 //}
 //window.addEventListener('load', getFromSessionStorage);
-console.log(lang);
 
 const body = document.querySelector('body');
 
@@ -234,7 +233,6 @@ function buildKeyboard() {
 
   function showTargets(e) {
     numberId = e.target.closest('button').getAttribute('id');
-    console.log(numberId);
     if (numberId === 'Backspace') {
       divWindow.lastChild.remove();
     }
@@ -242,6 +240,12 @@ function buildKeyboard() {
       let span = document.createElement('span');
       divWindow.append(span);
       span.innerHTML = '&nbsp &nbsp';
+      butt.classList.toggle('active');
+    }
+    else if (numberId === '') {
+      let span = document.createElement('span');
+      divWindow.append(span);
+      span.innerHTML = '&nbsp';
       butt.classList.toggle('active');
     }
     else if (numberId === 'ENTER') {
@@ -253,8 +257,17 @@ function buildKeyboard() {
     else if (numberId === 'Shift' || numberId === 'Alt' || numberId === 'Ctl') {
       butt.classList.toggle('active');
     }
-    else if (numberId === 'Caps lock') {
-      console.log('Caps Lock');
+    else if (numberId === 'Caps Lock') {
+      if (shriftPushed === 'off') {
+        shriftPushed = 'on';
+        wrapper.lastChild.remove();
+        buildKeyboard();
+      }
+      else if (shriftPushed === 'on') {
+        shriftPushed = 'off';
+        wrapper.lastChild.remove();
+        buildKeyboard();
+      }
     }
     else {
       let span = document.createElement('span');
@@ -269,24 +282,6 @@ buildKeyboard();
 
 var down = false;
 
-document.addEventListener('keydown', function changeLang(event) {
-  if (event.code == 'ShiftLeft' && (event.ctrlKey || event.metaKey)) {
-
-    if (lang === 'en') {
-      lang = 'ru';
-      wrapper.lastChild.remove();
-      buildKeyboard();
-      saveSessionStorage();
-    }
-    else if (lang === 'ru') {
-      lang = 'en';
-      wrapper.lastChild.remove();
-      buildKeyboard();
-      saveSessionStorage();
-    }
-  }
-});
-
 document.addEventListener('keydown', function(event) {
 
   let key = event.key;
@@ -300,6 +295,20 @@ document.addEventListener('keydown', function(event) {
     span.innerHTML = '&nbsp &nbsp';
     //butt.classList.toggle('active');
   }
+  else if (key === 'CapsLock') {
+    if(down) return;
+    down = true;
+    if (shriftPushed === 'off') {
+      shriftPushed = 'on';
+      wrapper.lastChild.remove();
+      buildKeyboard();
+    }
+    else if (shriftPushed === 'on') {
+      shriftPushed = 'off';
+      wrapper.lastChild.remove();
+      buildKeyboard();
+    }
+  }
   else if (key === 'Enter') {
     let span = document.createElement('span');
     divWindow.append(span);
@@ -310,7 +319,6 @@ document.addEventListener('keydown', function(event) {
     if(down) return;
     down = true;
     if (shriftPushed === 'off') {
-      console.log(key);
       shriftPushed = 'on';
       wrapper.lastChild.remove();
       buildKeyboard();
@@ -320,16 +328,9 @@ document.addEventListener('keydown', function(event) {
       wrapper.lastChild.remove();
       buildKeyboard();
     }
-    //let span = document.createElement('span');
-    //divWindow.append(span);
-    //span.innerHTML = '';
-    //butt.classList.toggle('active');
   }
-  else if (key === 'Alt' || key === 'Control') {
-    let span = document.createElement('span');
-    divWindow.append(span);
-    span.innerHTML = '';
-    //butt.classList.toggle('active');
+  else if (key === 'Alt' || key === 'Control' || key === 'F1' || key === 'F2'|| key === 'F3' || key === 'F4'|| key === 'F5' || key === 'F6'|| key === 'F7' || key === 'F8'|| key === 'F9' || key === 'F10'|| key === 'F11' || key === 'F12') {
+    event.preventDefault();
   }
   else {
   let span = document.createElement('span');
@@ -353,7 +354,6 @@ document.addEventListener('keydown', function(event) {
     if (key === 'Shift') {
 
       if (shriftPushed === 'on') {
-        console.log(key);
         shriftPushed = 'off';
         wrapper.lastChild.remove();
         buildKeyboard();
@@ -361,3 +361,22 @@ document.addEventListener('keydown', function(event) {
     }
 
 }, false);
+
+
+document.addEventListener('keydown', function changeLang(event) {
+  if (event.code == 'ShiftLeft' && (event.ctrlKey || event.metaKey)) {
+
+    if (lang === 'en') {
+      lang = 'ru';
+      wrapper.lastChild.remove();
+      buildKeyboard();
+      saveSessionStorage();
+    }
+    else if (lang === 'ru') {
+      lang = 'en';
+      wrapper.lastChild.remove();
+      buildKeyboard();
+      saveSessionStorage();
+    }
+  }
+});
