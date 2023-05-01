@@ -29,6 +29,7 @@ body.append(wrapper);
 
 const divWindow = document.createElement('div');
 divWindow.className = 'block-window';
+divWindow.contentEditable = 'true';
 wrapper.prepend(divWindow);
 
 const textWindow = document.createElement('p');
@@ -103,14 +104,14 @@ function buildKeyboard() {
       button.setAttribute('id',`${keysList[0][i].titleWithShrift}`);
     }
     else if (lang === 'ru' && shriftPushed === 'off') {
-      let button = document.createElement('button');
+      const button = document.createElement('button');
       button.className = keysList[1][i].class;
       divRow2.appendChild(button);
       button.textContent = keysList[1][i].title;
       button.setAttribute('id',`${keysList[1][i].title}`);
     }
     else if (lang === 'ru' && shriftPushed === 'on') {
-      let button = document.createElement('button');
+      const button = document.createElement('button');
       button.className = keysList[1][i].class;
       divRow2.appendChild(button);
       button.textContent = keysList[1][i].titleWithShrift;
@@ -145,7 +146,7 @@ function buildKeyboard() {
       button.setAttribute('id',`${keysList[1][i].title}`);
     }
     else if (lang === 'ru' && shriftPushed === 'on') {
-      let button = document.createElement('button');
+      const button = document.createElement('button');
       button.className = keysList[1][i].class;
       divRow3.appendChild(button);
       button.textContent = keysList[1][i].titleWithShrift;
@@ -241,7 +242,7 @@ function buildKeyboard() {
       let span = document.createElement('span');
       divWindow.append(span);
       span.innerHTML = '&nbsp &nbsp';
-      butt.classList.toggle('active');
+      //butt.classList.toggle('active');
     }
     else if (numberId === '&#9650') {
       let span = document.createElement('span');
@@ -267,16 +268,17 @@ function buildKeyboard() {
       const span = document.createElement('span');
       divWindow.append(span);
       span.innerHTML = '&nbsp';
-      butt.classList.toggle('active');
+      //butt.classList.toggle('active');
     }
     else if (numberId === 'ENTER') {
       const span = document.createElement('span');
       divWindow.append(span);
       span.innerHTML = '<br>';
-      butt.classList.toggle('active');
+      //butt.classList.toggle('active');
     }
-    else if (numberId === 'Shift' || numberId === 'Alt' || numberId === 'Ctl') {
-      butt.classList.toggle('active');
+
+    else if (numberId === 'Shift' || numberId === 'Alt' || numberId === 'Ctl' || numberId === 'Win' || numberId === 'Del') {
+      //butt.classList.toggle('active');
     }
     else if (numberId === 'Caps Lock') {
       if (shriftPushed === 'off') {
@@ -294,7 +296,7 @@ function buildKeyboard() {
       const span = document.createElement('span');
       divWindow.append(span);
       span.textContent = numberId;
-      butt.classList.toggle('active');
+      //butt.classList.toggle('active');
     }
   }
 }
@@ -306,13 +308,11 @@ var down = false;
 document.addEventListener('keydown', function(event) {
 
   let key = event.key;
-  const buttId = document.getElementById(key);
-  buttId.classList.add('active');
-
 
 
 
   if (key === 'Backspace') {
+    if(divWindow.lastChild)
     divWindow.lastChild.remove();
   }
   else if (key === 'Tab') {
@@ -383,21 +383,25 @@ document.addEventListener('keydown', function(event) {
       buildKeyboard();
     }
   }
-  else if (key === 'Alt' || key === 'Control' || key === 'Escape' || key === 'F1' || key === 'F2'|| key === 'F3' || key === 'F4'|| key === 'F5' || key === 'F6'|| key === 'F7' || key === 'F8'|| key === 'F9' || key === 'F10'|| key === 'F11' || key === 'F12' || key === 'Home' || key === 'End'|| key === 'PageUp' || key === 'PageDown' || key === 'Pause' || key === 'ScrollLock'|| key === 'Clear' || key === 'Unidentified' || key === 'NumLock' || key === 'Insert' || key === 'Meta') {
+  else if (key === 'Alt' || key === 'Control' || key === 'Escape' || key === 'Delete' || key === 'F1' || key === 'F2'|| key === 'F3' || key === 'F4'|| key === 'F5' || key === 'F6'|| key === 'F7' || key === 'F8'|| key === 'F9' || key === 'F10'|| key === 'F11' || key === 'F12' || key === 'Home' || key === 'End'|| key === 'PageUp' || key === 'PageDown' || key === 'Pause' || key === 'ScrollLock'|| key === 'Clear' || key === 'Unidentified' || key === 'NumLock' || key === 'Insert' || key === 'Meta') {
     event.preventDefault();
   }
   else {
   const span = document.createElement('span');
   divWindow.append(span);
   span.innerHTML = key;
+  //const buttId = document.getElementById(key);
+  //console.log(buttId);
+  //buttId.classList.add('active');
   }
 }, false);
 
 
   document.addEventListener('keyup', function (event) {
     let key = event.key;
-    const buttId = document.getElementById(key);
-    buttId.classList.remove('active');
+    //const buttId = document.getElementById(key);
+      //buttId.classList.remove('active');
+
     down = false;
     if (key === 'Shift') {
 
