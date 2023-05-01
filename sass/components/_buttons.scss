@@ -1,6 +1,10 @@
 .button {
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
+  &:active {
+    border-radius: 50%;
+    background-color: rgb(11, 11, 190)
+  }
 }
 
 .button_short {
@@ -11,10 +15,6 @@
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
   border: none;
-  &:active {
-    border-radius: 50%;
-    background-color: rgb(11, 11, 190)
-  }
 }
 
 .button_middle {

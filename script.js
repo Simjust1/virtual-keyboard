@@ -1,4 +1,19 @@
-let lang = 'en';
+var lang = 'en';
+
+
+function saveSessionStorage() {
+  sessionStorage.setItem('language', lang);
+}
+window.addEventListener('unload', saveSessionStorage);
+
+//function getFromSessionStorage() {
+  if(sessionStorage.getItem('language')) {
+    lang = sessionStorage.getItem('language');
+  }
+
+//}
+//window.addEventListener('load', getFromSessionStorage);
+console.log(lang);
 
 const keysList = [
   //первый массив - клавиши в латинице
@@ -530,13 +545,28 @@ const keysList = [
 
 const body = document.querySelector('body');
 
+const h1 = document.createElement('h1');
+h1.className = 'h1';
+body.prepend(h1);
+h1.innerHTML = 'RSS Virtual Keyboard';
+
 const wrapper = document.createElement('div');
 wrapper.className = 'wrapper';
-body.prepend(wrapper);
+body.append(wrapper);
 
 const divWindow = document.createElement('div');
 divWindow.className = 'block-window';
 wrapper.prepend(divWindow);
+
+const textWindow = document.createElement('p');
+textWindow.className = 'text';
+divWindow.after(textWindow);
+textWindow.innerHTML = 'Клавиатура создана в операционной системе Windows';
+
+const switchLanguage = document.createElement('p');
+switchLanguage.className = 'text';
+textWindow.after(switchLanguage);
+switchLanguage.innerHTML = 'Комбинация для переключения языка - левый Ctl + левый Shift';
 
 
 function buildKeyboard() {
@@ -684,26 +714,55 @@ function showTargets(e) {
 
 buildKeyboard();
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function changeLang(event) {
   if (event.code == 'ShiftLeft' && (event.ctrlKey || event.metaKey)) {
     if (lang === 'en') {
          lang = 'ru';
          wrapper.lastChild.remove();
          buildKeyboard();
+         saveSessionStorage();
     }
     else if (lang === 'ru') {
       lang = 'en';
       wrapper.lastChild.remove();
       buildKeyboard();
+      saveSessionStorage();
     }
   }
 });
 
 
+/*
+//SAVE LANGUAGE TO sessionStorage
+function saveSessionStorage() {
+  sessionStorage.setItem('language', lang);
+}
+window.addEventListener('unload', saveSessionStorage)
+
+function getFromSessionStorage() {
+  if(sessionStorage.getItem('language')) {
+    lang = sessionStorage.getItem('language');
+  }
+}
+window.addEventListener('load', getFromSessionStorage)
+*/
+
+
 document.addEventListener('keypress', function(event) {
+
   let key = event.key;
+  console.log(key);
   let span = document.createElement('span');
   divWindow.append(span);
   span.innerHTML = key;
 
+  let butt = document.querySelectorAll('.button');
+  //let tt = butt.includes('key');
+  let ttr = butt.includes('1');
+
 });
+
+
+
+
+
