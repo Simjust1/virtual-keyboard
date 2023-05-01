@@ -269,14 +269,14 @@ const keysList = [
       class: 'button button_short',
     },
     {
-      title: "/",
-      titleWithShrift: '/',
+      title: "&#9650",
+      titleWithShrift: '&#9650',
       class: 'button button_short',
     },
     {
       title: 'Shift',
       titleWithShrift: 'Shift',
-      class: 'button button_long',
+      class: 'button button_middle',
     },
 
     {
@@ -310,18 +310,18 @@ const keysList = [
       class: 'button button_short',
     },
     {
-      title: '<',
-      titleWithShrift: '<',
+      title: '&#9668',
+      titleWithShrift: '&#9668',
       class: 'button button_short',
     },
     {
-      title: '?',
-      titleWithShrift: '?',
+      title: '&#9660',
+      titleWithShrift: '&#9660',
       class: 'button button_short',
     },
     {
-      title: '>',
-      titleWithShrift: '>',
+      title: '&#9658',
+      titleWithShrift: '&#9658',
       class: 'button button_short',
     },
   ],
@@ -595,14 +595,14 @@ const keysList = [
       class: 'button button_short',
     },
     {
-      title: "/",
-      titleWithShrift: '/',
+      title: "&#9650",
+      titleWithShrift: '&#9650',
       class: 'button button_short',
     },
     {
       title: 'Shift',
       titleWithShrift: 'Shift',
-      class: 'button button_long',
+      class: 'button button_middle',
     },
 
 
@@ -637,18 +637,18 @@ const keysList = [
       class: 'button button_short',
     },
     {
-      title: '<',
-      titleWithShrift: '<',
+      title: '&#9668',
+      titleWithShrift: '&#9650',
       class: 'button button_short',
     },
     {
-      title: '?',
-      titleWithShrift: '?',
+      title: '&#9660',
+      titleWithShrift: '&#9660',
       class: 'button button_short',
     },
     {
-      title: '>',
-      titleWithShrift: '>',
+      title: '&#9658',
+      titleWithShrift: '&#9658',
       class: 'button button_short',
     },
  ]

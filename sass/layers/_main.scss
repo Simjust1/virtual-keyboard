@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .block-window {
@@ -15,6 +17,8 @@
   flex-direction: column;
   row-gap: 10px;
   margin: 20px 0;
+  background-color: #542a2a;
+  padding: 15px;
 }
 
 .row {
@@ -25,7 +29,7 @@
 
 .text {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   margin: 0 0;
   padding: 5px 0;
